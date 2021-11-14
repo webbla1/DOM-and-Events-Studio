@@ -1,7 +1,8 @@
 window.addEventListener("DOMContentLoaded", ()=> {
-    //shuttle location
+    //shuttle starting location
     let height = 0;
-    let left = 0;
+    let left = 175;
+    let bottom = 0;
     
     //HTML Elements
     const rocket = document.getElementById("rocket");
@@ -29,6 +30,7 @@ window.addEventListener("DOMContentLoaded", ()=> {
       landingButton.addEventListener('click', ()=>{
           window.alert("The shuttle is landing. Landing gear engaged.");
           height = 0;
+          spaceShuttleHeight.innerText = height;
           flightStatus.innerText = "The shuttle has landed.";
           shuttleBackground.style.backgroundColor = "green";
       })
@@ -43,19 +45,25 @@ window.addEventListener("DOMContentLoaded", ()=> {
       missionAbortButton.addEventListener('click', missionAbortHandler);
 
       upButton.addEventListener('click', ()=>{
-        height += 10000;  
-        rocket.style.bottom = `${height / 1000}px`;
+        height += 10000;
+        spaceShuttleHeight.innerText = height;
+        bottom += 10;  
+        rocket.style.bottom = `${bottom}px`;
+        
+
       })
       downButton.addEventListener('click', ()=>{
-        height += 10000;  
-        rocket.style.bottom = `-${height / 1000}px`;
+        height -= 10000;
+        spaceShuttleHeight.innerText = height;  
+        bottom -= 10;  
+        rocket.style.bottom = `${bottom}px`;
       })
       leftButton.addEventListener('click', ()=>{
-        //height += 10000;  
-        rocket.style.left = `-10px`;
+        left -= 10;  
+        rocket.style.left = `${left}px`;
       })
       rightButton.addEventListener('click', ()=>{
-        //height += 10000;  
-        rocket.style.bottom = `10px`;
+        left += 10;  
+        rocket.style.left = `${left}px`;
       })
 });
